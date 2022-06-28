@@ -1,27 +1,34 @@
 import { Box, Button, Typography } from "@mui/material"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { TicketContext } from "./context"
 
-export const NumberPad = ({ number }) => {
+export const NumberPad = () => {
     const NumberBlock = {
-        width: "90px",
+        width: "110px",
         height: "70px",
         textAlign: "center",
         border: "1px solid #e9e9e9",
         display: "flex",
         justifyContent: "center",
         alignItems: "center"
-
     }
+
+    const {SetTickets,Tickets} = useContext(TicketContext)
 
     const [ticket, SetTicket] = useState("")
 
+    // if(Tickets.length>=6)
 
     return ticket.length < 6 ? (
         <Box sx={{mt:5}}>
-            <Typography>
+            <Box sx={{height:"50px",m:"auto"}}>
+
+            <Typography >
 
                 {ticket}
             </Typography>
+
+            </Box>
             <Box sx={{ display: "flex" }}>
                 <Box sx={NumberBlock} onClick={() => { SetTicket(ticket + "7") }}>
                     <Typography>
@@ -113,7 +120,7 @@ export const NumberPad = ({ number }) => {
         </Box>
     ) : (
         <Box sx={{mt:5}} >
-            <Typography>
+            <Typography sx={{height:"50px"}}>
 
                 {ticket}
             </Typography>
@@ -203,7 +210,14 @@ export const NumberPad = ({ number }) => {
                 <Box sx={NumberBlock}>delet</Box>
             </Box>
             <Box>
-                <Button>+ Add Ticket</Button>
+                <Button onClick={()=>{
+                    if(Tickets.length<=5){
+                        SetTickets([...Tickets,ticket])
+                        SetTicket("")
+                    }else{
+                        alert("limit reached")
+                    }
+                }} >+ Add Ticket</Button>
             </Box>
         </Box>
     )

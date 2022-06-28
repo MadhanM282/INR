@@ -8,7 +8,7 @@ export const Tickets = () => {
     return (
         <Box sx={{ display: "flex", gap: 5, backgroundColor: "#1d78c7"}}>
             {Tickets.map((e) => {
-                return <Box sx={{height:"100px",m:"auto",display: "flex",alignItems: "center"}}>
+                return <Box sx={{height:"100px",m:"auto",display: "flex",alignItems: "center",border:1}}>
 
                     <Typography>
                         {e}

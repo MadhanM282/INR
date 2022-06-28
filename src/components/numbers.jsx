@@ -211,7 +211,7 @@ export const NumberPad = () => {
             </Box>
             <Box>
                 <Button onClick={()=>{
-                    if(Tickets.length<=5){
+                    if(Tickets.length<5){
                         SetTickets([...Tickets,ticket])
                         SetTicket("")
                     }else{
